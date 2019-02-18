@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>nchat - Login </title>
+
+  <link rel="stylesheet" href="css/reset.css">
+
+  <link rel="stylesheet" href="css/reg.css" media="screen" type="text/css" />
+
+</head>
+
+<body>
+
+  <div class="wrap">
+    <div class="avatar">
+      <img src="img/me_waiting.png">
+    </div>
+    <form action="login" method="post">
+      <div class="inputs">
+      <input name="name" type="text" placeholder="name" required>
+      <div class="bar">
+        <i></i>
+      </div>
+      <input name="password" type="password" placeholder="password" required>
+      </div>
+
+
+    <button  onclick="this.form.submit();">Войти</button>
+    </form>
+    <a href="" class="forgot_link">забыли пароль?</a>
+
+    <div class="add_info"><a href="/reg">создать учетную запись ></a></div>
+  </div>
+
+</body>
+
+</html>

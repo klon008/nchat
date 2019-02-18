@@ -1,0 +1,88 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Чат</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.css">
+    <link href="css/main.css" rel="stylesheet">
+
+    <script src="libs//polyfill.min.js"></script>
+    <script src="libs/socket.io.js"></script>
+    <script src="libs/jquery-3.3.1.min.js"></script>
+    <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="libs/popper.min.js"></script>
+
+    <script src="libs/jquery.nicescroll.min.js"></script>
+
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <!-- Здесь можете подключить ваш main.css -->
+    <script type="text/javascript">
+        var v = <%- acess %>;
+    </script>
+    <script src="scripts/main.js" charset="utf-8"></script>
+</head>
+<body>
+<% var v = JSON.parse(acess);
+var uiRule = ''
+for (var rule in v){
+if(v[rule] === 1){
+    uiRule=uiRule+' '+rule
+}} %>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Сообщение</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
+                <button id="button_change_msg" type="button" class="btn btn-primary">Изменить</button>
+                <button id="button_change_msg_save" type="button" class="btn btn-primary d-none">Сохранить</button>
+                <button id="button_del_msg" type="button" class="btn btn-danger">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="ui<%-uiRule%>">
+    <div class="left-menu do-nicescrol">
+        <div id="users_list" class="users">
+            <div class="user my_user" data-username="'+userName+'"><img src="img/user-ava.png">
+                <div class="info">
+                    <div class="user_name"><%= uname %></div>
+                    <div class="status"></div>
+                </div>
+                <a href="/logout" class="btn btn_logout" onclick='logout();'>
+                    <img src='/img/Logout-512.png' alt='logout'>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="right-menu">
+        <div id="chat_box" class="do-nicescrol"></div>
+        <div class="right-menu__underchat_box">
+            <div id="type_indicator" style="display:none;"><span id="typing_names"></span><span id="typing_numbers">печатает текст</span>
+                <div id="wave">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+            <p></p>
+            <input type="text" name="text" id="text_for_sending" placeholder="Напишите сообщение...">
+            <button type="button" name="button" id="btn_send" class="btn btn_send"></button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
